@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<div>
+<div class="container">  
+  <h1 style="text-align: center;">Administración de artículos</h1>
+    <table class="table"border="1" *ngIf="hayRegistros(); else sinproductos">
+      <thead class="table-dark">
+      <tr>
+        <td>Codigo</td>
+        <td>Nombre</td>
+        <td>Precio</td>
+        <td>Tipo</td>
+        <td>Descripcion</td>
+        <td>Distribuidora</td>
+        <td>Borrar</td>
+        <td>Seleccionar</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let articulo of lista">
+        <td>{{articulo.id}}</td>
+        <td>{{articulo.nombre}}</td>
+        <td>{{articulo.precio}}</td>
+        <td>{{articulo.tipo}}</td>
+        <td>{{articulo.descripcion}}</td>
+        <td>{{articulo.distribuidora}}</td>
+        <td><button (click)="eliminar(articulo.id)" class="btn btn-danger">Borrar?</button></td>
+        <td><button (click)="mostrar(articulo.id)" class="btn btn-success">Seleccionar</button></td>
+      </tr>
+    </table>
+    <ng-template #sinproductos><p>No hay productos</p></ng-template>
+    <div class="container">
+      <h1 style="text-align: center;">Datos</h1>
+      <div class="container" style="text-align: right;margin-right: 100px;padding-right: 420px;">
+      <p>
+        Nombre:<input type="text" [(ngModel)]="prod.nombre" />
+      </p>
+      <p>
+        Precio:<input type="text" [(ngModel)]="prod.precio" />
+      </p>
+      <p>
+        Tipo:<input type="text" [(ngModel)]="prod.tipo" />
+      </p>
+      <p>
+        Descripcion:<input type="text" [(ngModel)]="prod.descripcion" />
+      </p>
+      <p>
+        Distribuidora:<input type="text" [(ngModel)]="prod.distribuidora" />
+      </p> 
+      </div>           
+      <div style="text-align: center;">
+      <p style="padding-left: 35px;"><button (click)="nuevo()" class="btn btn-primary" style="margin-right: 5px;">Agregar</button>
+      <button (click)="actualizar()" class="btn btn-warning">Modificar</button></p>
+    </div> 
+  </div>
+</div>
+</div>
