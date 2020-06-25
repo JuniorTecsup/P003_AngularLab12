@@ -24,4 +24,10 @@ export class ArticulosService {
   actualizar(articulo) {
     return this.http.put(`${this.url}`, articulo);    
   }
+  upload(formData) {    
+  let urlAPI = 'http://localhost:3000/productos/uploadFile';//api-->productos    
+    return this.http.post(urlAPI, formData); 
+  }
 }
+
+
